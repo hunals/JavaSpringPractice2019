@@ -1,0 +1,482 @@
+/*
+		 			Array
+		 			
+		 Represented by square brackets [] on declaration
+		 
+		 Can hold multiple value of same type : Primitives or reference type
+		 
+		 Array is fixed size and cannot be changed(cannot add more items or take out items)
+		 
+		 Array Object cannot be printed out directly to display all the elements
+		 
+		 Array is ordered and can be accessed by index.
+		 
+		 Array allows duplicate
+		 
+		 Array can be useful for many situations however when we work on more complex
+		 data operations it can be inconvenient.
+		 
+		 So, even it is convenient when we work with simple data operation Array can be limited in a lot of
+		 cases.
+		 
+		 In order to work with data more efficiently Java provides collections framework.
+		 It is a unified architecture for representing and manipulating collections.
+		 So, it helps to reduce programming effort with lots of built in high level functionality.
+		 
+		 - Collections Framework Shipped with JDK, it's available to use
+		 - It provides many built in features to work with data efficiently
+		 - Provide different types of data structures like
+		 		- List, Set, Map, Queue
+		 
+		 ArrayList Class is one of the list implementation has built in the language and it can be used
+		 after importing one of;
+		 
+		 import java.util.ArrayList;
+		 import java.util.*;
+		 
+		 - Unlike Array, it is resizable
+		 This is most visible advantage of ArrayList over Array
+		 
+		 - Can only hold objects, cannot store primitives
+		 - It's in ordered collection and allow duplicate
+		 - Storing any type is possible but recommended to store only 1 type ??????????????
+		 
+		 
+		======= Creating ArrayList Object =========
+		
+		
+//		
+//		So, before java 5 ArrayList created in this way
+//		ArrayList list1 = new ArrayList();
+//		
+//		after java 5 diamond operators were introduced to indicate what kind of data
+//		you want to store in the ArrayList
+//		
+//		//prior to java 7
+//		ArrayList<Type> list1 = new ArrayList<Type>();
+//		
+//		
+//		//java 7 and later 
+//		ArrayList<Type> list1 = new ArrayList<>();
+		
+		
+		//using List as reference type
+		List<Type> list1 = new ArrayList<>();
+		It is also possible to use reference type as List instead of ArrayList
+		as long as we put object type as ArrayList on the right.
+		It is actually pretty common to declare and create an object in this way 
+		which we're going to talk about later.
+		
+		Before Java 5 creating with no arg constructor
+			ArrayList list1 = new ArrayList(); 
+		This is saying you want to store any type of object into this ArrayList
+		So, you can also create ArrayList with modifiable predefined size
+			ArrayList list1 = new ArrayList(10);
+
+		and you can also create an ArrayList with another ArrayList like this one;
+			ArrayList list2 = new ArrayList(list2);
+			
+			
+		After java 5 
+		//creating with no arg constructor
+		ArrayList <String> list1 = new ArrayList<String>();
+		Here we're saying we want to have an ArrayList that only store String
+		so, all the elements in this ArrayList will be a String
+		
+		After java 7 we don't have to put second data type because we already
+		know that it store one type.
+		//Creating with modifiable predefined size
+		ArrayList <Integer> list2 = new ArrayList<>(10);
+		in this one storing Integer and it's predefining size as 10 items.
+		
+		//Creating with another ArrayList
+		ArrayList<Integer> list3 = new ArrayList<>(list2);
+		Here we're saying creating Integer with all the elements from the list2
+		==========================================================================
+		
+					ArrayList         VS        Array
+		Can store only objects               Can store primitives and objects
+		Can be resized                       Has defined size and cannot be changed
+		Can be printed directly              Cannot be printed directly to display elements
+		to display elements                  need Arrays.toString() method
+		
+		===========================================================================
+		
+		Common ArrayList Methods
+		
+		add(Type element)  ====> Adds the element to the end of this list
+		get(int index) ========> Returns the element at the specified position
+		contains(Object element)==> Returns true if element is in this list; otherwise, returns false
+		indexOf(Object element) ==> Returns the index of the first occurrence of element in this list
+		clear() ==================> Removes all elements from this list
+		size() ===================> Returns the number of elements in this list
+		remove(int index) ========> Removes the element at the specified index of this list
+		isEmpty() ================> Returns true if this list is empty; otherwise, returns false
+		set(int index, Object element)=> Overwrite the value at given index
+		and more.........
+		
+		
+		//Creating an ArrayList object
+		ArrayList<String> lst = new ArrayList<>();
+		List<String> lst1 = new ArrayList<>();//which is bigger data type
+		
+		//Adding Elements
+		lst.add("Apple");
+		lst.add("Orange");
+		lst.add("Banana");
+		System.out.println(lst); //we can directly print using variable name
+		
+		//Getting Elements
+		System.out.println("first element "+ lst.get(0));
+		//you get the element by index just like you do with array however we're using
+		ArrayList method get. to get the first element and 
+		also getting second element by using index.
+		System.out.println("second element "+ lst.get(1));
+		
+		You can also use for loop to get all the element. 
+		
+		for (int i = 0; i < lst.size(); i++) {
+			System.out.println(lst.get(i));
+		}
+		//System.out.println(lst);
+		
+		//Check if an item exist in the list --> contains(item)
+		System.out.println(lst.contains("Apple"));//it is going to give me true
+		System.out.println(lst.contains("Pear")); // print false
+		
+		//Getting the index of item by value indexOf(item)
+		System.out.println("index of Apple "+lst.indexOf("Apple")); 
+		//this will check specifically where is your item
+		
+		
+		//checking how many items in the list
+		System.out.println("item count "+ lst.size);
+		
+		//checking if the list is empty isEmpty();
+		System.out.println("list is empty ? "+ lst.isEmpty());//false because I have item on the list
+		
+		//setting the value for certain index
+//		We added 3 items but if I want to change certain item in the index you can
+//		do that.
+//		I want to change second item orange to pear. Second item index is 1, so
+//		I'm going to say lst.set and I'm going to give index number of the item that 
+//		I'm going to change and I give new value for this item "Pear"
+		lst.set(1, "Pear");
+		System.out.println("new list items " + lst);
+		//new list is Apple, Pear, Banana
+		//That is how we set certain item in the index, basically we're changing the item
+		
+		
+		//Removing item by Index
+		There are 2 ways to remove certain item. First one is index,
+		lst.remove(0);
+		System.out.println("new list items after removing " + lst);
+		//So, Apple is deleted from the first index.
+		
+		//Remove item by value
+		lst.remove("Banana");
+		System.out.println("new list items after removing " + lst);
+		
+		//removing all the items in the list
+		lst.clear();
+		System.out.println("new list items after clearing " + lst);
+		
+		
+		//now let's check if this list is empty or not
+		System.out.println("list is empty " + lst.isEmpty());
+		
+		//So, we just explored all the basic arraylist methods that we can use
+		to perform certain action on ArrayList.
+		
+		===================================================================================
+		
+		// NO PRIMITIVE TYPES ALLOWED AS TYPE 
+		// ArrayList<int> numList ; THIS IS BAD 
+		
+		// arraylist that store only Integer
+		ArrayList<Integer> numList = new ArrayList<>(); 
+		//numList.add("ABC"); 
+		
+		Integer i = 100 ; // autoboxing(converting) primitive type to Integer Object which is Wrapper Class
+		/*
+		 * Wrapper class --> 
+		 * specifically designed to 
+		 * store primitive value as object 
+		 * 
+		 * Object can have properties and behaviors 
+		 * and primitives are pure values with no properties and behaviors 
+		 * 
+		 * 
+		 * */
+		
+		// ADDING ITEM 
+		// WE call add method from Arraylist class 
+		
+		/*
+		numList.add(i); 
+		numList.add(200) ; 
+		numList.add(300) ; 
+		 
+		//GETTING SINGLE ITEM FROM ARRAYLIST 
+		// we call get(index) of ArrayList
+		
+		Integer i1 = numList.get(0); 
+		int i2    =  numList.get(1);  // auto unboxing happen here
+		
+		System.out.println( i1 );
+		System.out.println( i2 );
+		System.out.println( numList.get(2) );
+		
+		
+		// we can directly print to see what's inside 
+		System.out.println( numList  );
+		
+		
+		========================================================================
+		TASK:
+		 
+		// CREATE ARRAYLIST OF DOUBLE
+	    // CALL IT priceList
+	    // Add 5 prices
+	    // try to get 3rd item
+	    // iterate over arraylist using both loops
+	    // and print out
+	    // in another loop
+	    // only print out price more than 10 ;
+	    // in another loop
+	    // GET THE SUM OF ALL PRICES ;
+	     
+	    
+	    ArrayList<Double> priceList = new ArrayList<>();
+	    priceList.add(1.2);
+	    priceList.add(10.12);
+	    priceList.add(1.4);
+	    priceList.add(1.5);
+	    priceList.add(1.6);
+
+	    System.out.println(priceList.get(2));
+
+	    System.out.println("PRINT USING FOR LOOP ");
+	    
+	    for (int i = 0; i < priceList.size(); i++) {
+	      System.out.println(priceList.get(i));
+	    }
+
+	    System.out.println("PRINT USING FOR EACH LOOP ");
+	    for( Double eachDouble : priceList) {
+	      System.out.println(eachDouble);
+	    }
+	    // in another loop
+	    // only print out price more than 10 ;
+	    System.out.println("PRINT ONLY PRICE MORE THAN 10 ");
+	    for( Double eachDouble : priceList) {
+	      
+	      if(eachDouble > 10) {
+	        System.out.println(eachDouble);
+	      }
+	      
+	    }
+	    
+	    // in another loop
+	    // GET THE SUM OF ALL PRICES ;
+	    
+	    System.out.println("PRINT SUM ");
+	    // arithmatic operation only happens for primitives 
+	    // if you try to add wrapper objects it will be unboxed 
+	    double sum = 0 ; 
+	    for (double each : priceList) {
+	      sum += each ; 
+	    }
+	    System.out.println(   sum);
+	        
+		============================================================================================================
+		TASK 2
+		
+		/*
+		 *  
+		 * Create an ArrayList of integer from 1-100
+		 * 
+		 * get the sum of the each items 
+		 * get the average
+		 * 
+		 * Create another list that contain items from 100- 1 
+		 * get the count of numbers divisible by 3 and 5 
+		 * 
+		 * OPTIONAL 
+		 * Combine above 2 lists -- add everything from 2nd list to first one
+		 * 
+		 * Update every odd items to 0 ; 
+		 * 
+		 * */
+		/*
+		ArrayList<Integer> lst = new ArrayList<>();
+		// adding 1-100 to the list 
+		for(int i=1; i<=100; i++) {
+			lst.add(i);
+		}
+		System.out.println(  lst  );
+		
+		
+		int sum = 0;
+		for (int i = 0; i < lst.size(); i++)
+		{
+			sum+= lst.get(i);
+		}
+		int average = sum/ lst.size(); 
+		System.out.println( "the average is : " + average);
+		
+		ArrayList<Integer> lst = new ArrayList<>();
+		// adding 1-100 to the list 
+		
+		for (int i = 100; i > 0; i--) {
+
+			lst.add(i);
+
+		}
+		System.out.println(lst);
+		
+		int count = 0 ; 
+		for(Integer each: lst) {
+			
+			if(each%3==0 && each%5==0)
+				count++ ; 
+				//System.out.println("target number : " + each);
+			
+		}
+		System.out.println("The target count is : " + count);
+		 
+		
+		int count = 0;
+		for (int i = 0; i < nums2.size(); i++) {
+			if(nums2.get(i)%3==0&&nums2.get(i)%5==0) {
+				count++;
+				//System.out.print(nums2.get(i) + " ");
+			}
+		}
+		System.out.println(count);
+	===============================================================================================
+	
+	 ArrayList<Integer> lst1 = new ArrayList<>();
+	    // adding 1-100 to the list 
+	    for(int i=1; i<=100; i++) {
+	      lst1.add(i);
+	    }
+	    System.out.println(  lst1  );
+	    
+	    
+	    ArrayList<Integer> lst2 = new ArrayList<>();
+	    // adding 1-100 to the list 
+	    
+	    for (int i = 100; i > 0; i--) {
+	      lst2.add(i);
+	    }
+	    System.out.println(lst2);
+	    
+	    //the logic is : pick each and every item in lst2 
+	    //and add it to lst1
+	    
+	    for(int i = 0; i<lst2.size();i++) {
+	    	//System.out.println(lst2.get(i));
+	    	Integer eachIn2 = lst2.get(i);
+	    	lst1.add(eachIn2);
+	    }
+	    System.out.println(lst1);
+		 
+		 
+		 
+		//addAll METHOD
+		ArrayList<Integer> lst1 = new ArrayList<>();
+		for(int i=1; i<=5; i++) {
+			lst1.add(i);
+		}
+		System.out.println(  lst1  );		
+		
+		ArrayList<Integer> lst2 = new ArrayList<>();
+		for (int i = 6; i > 0; i--) {
+			lst2.add(i);
+		}
+		System.out.println(lst2);
+	
+		//// addAll method of ArrayList class 
+		// this will just add every item in lst2 by the end of lst1 items 
+		lst1.addAll(lst2) ;  
+		System.out.println( lst1 );
+		
+		
+		//// addAll method of ArrayList class , second overloaded version
+		// this will just insert every item in lst2
+		// to the specified index 
+		
+		lst1.addAll(1,lst2) ; 
+		System.out.println( lst1 );
+		
+		
+		
+		ArrayList<String> lst1 = new ArrayList<>();
+	    lst1.add("Superman"); 
+	    lst1.add("Batman"); 
+	    lst1.add("Aquaman"); 
+	    
+	    ArrayList<String> lst2 = new ArrayList<>();
+	    lst2.add("Wonder Woman"); 
+	    lst2.add("Cyborg"); 
+	    lst2.add("Flash");
+	    
+//	    lst1.addAll(lst2) ; 
+//	    System.out.println(lst1);
+	    
+	    lst1.addAll(2, lst2); 
+	    
+	    System.out.println("Justice league : " + lst1);
+	    
+	    
+	    ============================================================================
+	    
+	    // Arrays class is a class that have a lot of 
+	    // static methods to perform common array operation 
+	    // Arrays.sort(arrayObject)
+	    
+	    // Collections is a class under java.util package 
+	    // to perform common collection object related operation 
+	    
+	    ArrayList<String> lst = new ArrayList<String>(); 
+	    lst.add("Etka") ;
+	    lst.add("Umut") ;
+	    lst.add("Aygul") ;
+	    lst.add("Izdar") ;
+	    lst.add("Amir") ;
+	    lst.add("Mehmet") ;
+	    
+	    System.out.println(lst);
+	    // sorting arraylist using sort method of Collections class 
+	    Collections.sort(lst);    
+	    System.out.println(lst);
+	    
+	    // looking for the index of an item in the sorted list    
+	    int amirLocation = Collections.binarySearch(lst, "Amir") ; 
+	    System.out.println("index is : "+ amirLocation);
+	    
+	    int talmuratLocation = Collections.binarySearch(lst, "talmurat") ; 
+	    System.out.println("index is : "+ talmuratLocation);
+	    
+	    // reversing collection 
+	    Collections.reverse(lst);
+	    System.out.println(lst);
+	    
+	    // shuffle items inside the list 
+	    Collections.shuffle(lst);
+	    System.out.println(lst);
+	    
+	    
+	    
+	    
+	    
+	    // sort method from ArrayList excect an object called Comparator we did not learn
+	    // However even we don`t know this type of object
+	    // we do know that any reference variable can be set to null 
+	    // so we can just pass null to this method 
+	    // and it will just work 
+	    //lst.sort(null); 
+		 
+		 
+		 */

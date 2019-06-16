@@ -1,0 +1,75 @@
+Default behaviors of compiler : 
+    anything under java.lang package is automatically imported 
+    and no need for explicit import statement   
+        for example : String class , System , Object 
+    non-final fields of the class : 
+        get default value of 0 (.0) for numbers , false for boolean 
+        empty char for char , null for reference variable 
+        int i = 'a' ; --->>> 97 ;   
+    automatic type widening | upcasting 
+        long l = 10  -->>> 10L ; 
+    autoboxing | auto unboxing 
+        Integer i1 = 10 ---->> new Integer(10) ; 
+        int i2 = new Integer(12)  --->>> 12 ; 
+    constructor : 
+        if we don't define any constructor 
+                -->> compiler will provide default no arg constructor 
+               (as long as any constructor is defined we don't get one)
+        first statement of any constructor is a call to super class;s 
+        no arg cobstructor using super() 
+               (as long as no other constructor call is made already)
+    Inheritance : 
+         if a class does not explicitly extends another class 
+         it will implicitly extends Object class 
+    Interface : 
+        all the fields in interface are 
+            automatically public static final 
+            (and can not be marked with other access modifiers privte / protected)
+        all the methods without body are automatically public abstract; 
+        everything in interface are implicitly public 
+extends VS implements 
+    a class extends another class (only one directly)
+    
+    an interface extends another interface (one or more interfaces)
+    
+    a class implements an interface (one or more)
+/// ---- TASK 1 
+Create two interfaces called 
+  Edible    
+        with single abstract method  void eat(); 
+, Drinkable
+        with single abstract method  void drink(); 
+Drinkable extends Edible interface 
+create a class called Burger  and it implements Edible interface 
+it has 2 instance fields  name and size 
+it has constructors to set the value 
+and it has toString method 
+create another class called IceCoffee  
+    it implements Drinkable interface
+    it has 1 instance field  -- size 
+    it has constructors to set the value 
+    and it has toString method 
+fix any error might come up 
+public interface Edible{
+    void eat();
+}
+public interface Drinkable extends Edible{
+    void drink();
+}
+public class IceCoffe implements Drinkable{
+    
+    // 
+}
+USB_2_PortDevice    , USB_3_PortDevice
+USB_3 PORT (BLUE ONE) 
+    you can use both USB2 and USB3 
+USB_2 PORT (OLD ONE) 
+    you can ONLY use USB2
+public interface USB_2_PortDevice{
+    
+    void plugAndtransmitData();
+}
+public interface USB_3_PortDevice extends USB_2_PortDevice{
+    
+    void fasterDataTransition(); 
+}

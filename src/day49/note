@@ -1,0 +1,25 @@
+
+Implicit behavior of compiler
+
+automatic type widening / up casting
+long i = 10
+
+Wrapper type auto boxing and un boxing
+Inteter i = 10 ;
+i = new Integer(10) ;
+
+Constructor
+    if you don’t have any constructor
+    compiler will add no arg constructor
+
+    public YourClassName(){
+
+    }
+
+    first line of any constructor is always a call to
+    super classes no arg constructor if it’s not already called
+    using either super(args...). or this(arg...)
+
+    public YourClassName(){
+        super() ;
+    }
